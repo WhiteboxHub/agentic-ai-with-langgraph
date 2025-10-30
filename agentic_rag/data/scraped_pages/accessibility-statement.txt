@@ -1,0 +1,1 @@
+Our ongoing accessibility efforts work towardsWeb Content Accessibilities Guidelines (WCAG) 2.2. While we strive to make the website as accessible as possible, some issues may occur. We appreciate your understanding and remain committed to resolving such issues as they are discovered.

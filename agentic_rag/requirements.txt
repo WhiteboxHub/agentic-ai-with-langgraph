@@ -1,0 +1,6 @@
+langchain_community
+beautifulsoup4
+langchain.text_splitte
+docling
+sentence_transformers
+pymilvus
