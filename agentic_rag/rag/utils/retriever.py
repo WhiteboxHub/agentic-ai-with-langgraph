@@ -65,9 +65,6 @@
 #         return retrieved
 
 
-# # ----------------------------------------------------------------------
-# # 🧪 Example usage
-# # ----------------------------------------------------------------------
 # # if __name__ == "__main__":
 # #     retriever = MilvusRetriever(
 # #         collection_name="documents_chunks",
@@ -110,15 +107,15 @@ class MilvusRetriever(BaseRetriever):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        # 🟢 Connect to Milvus
+        # Connect to Milvus
         print(f"🔌 Connecting to Milvus at {self.milvus_host}:{self.milvus_port} ...")
         connections.connect(alias="default", host=self.milvus_host, port=self.milvus_port)
 
-        # 🧠 Load collection
+        # Load collection
         self._collection = Collection(self.collection_name)
         self._collection.load()
 
-        # 🧩 Load embedding model
+        # Load embedding model
         self._model = SentenceTransformer(self.model_name)
         print(f"✅ Connected to Milvus collection: {self.collection_name}")
 
@@ -146,7 +143,7 @@ class MilvusRetriever(BaseRetriever):
             chunk_text = hit.entity.get("chunk_text")
             score = 1 - hit.distance
             documents.append(Document(page_content=chunk_text, metadata={"score": score}))
-        print("these are the retrieved dopcuments ---",documents)
+        # print("these are the retrieved dopcuments ---",documents)
 
         return documents
 

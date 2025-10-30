@@ -1,0 +1,149 @@
+[
+  {
+    "query": "What is Docling and what problem does it solve?",
+    "relevant_chunks": [
+      "This technical report introduces Docling, an easy-to-use, self-contained, MIT-licensed open-source package for PDF document conversion.",
+      "Converting PDF documents back into a machine-processable format has been a major challenge for decades due to variability and loss of structure. Docling addresses this challenge with AI-powered layout and table recognition models."
+    ]
+  },
+  {
+    "query": "Which AI models power Docling’s document conversion capabilities?",
+    "relevant_chunks": [
+      "Docling is powered by specialized AI models for layout analysis (DocLayNet) and table structure recognition (TableFormer).",
+      "The layout analysis model is an object-detector derived from RT-DETR, retrained on DocLayNet, while TableFormer is a vision-transformer model designed for table structure recovery."
+    ]
+  },
+  {
+    "query": "How can a user install and use Docling for PDF conversion?",
+    "relevant_chunks": [
+      "To use Docling, you can simply install the docling package from PyPI. Documentation and examples are available in our GitHub repository.",
+      "Docling provides an easy code interface to convert PDF documents from file system, URLs or binary streams, and retrieve the output in either JSON or Markdown format."
+    ]
+  },
+  {
+    "query": "Describe the pipeline architecture of Docling.",
+    "relevant_chunks": [
+      "Docling implements a linear pipeline of operations, which execute sequentially on each document.",
+      "Each document is parsed by a PDF backend, processed by AI models for layout and table structure, and then aggregated and post-processed into a JSON or Markdown output."
+    ]
+  },
+  {
+    "query": "What PDF backends are supported in Docling?",
+    "relevant_chunks": [
+      "Docling provides multiple backend choices, including a custom-built parser based on qpdf (docling-parse) and an alternative backend using pypdfium.",
+      "The pypdfium backend may be used as a backup choice in certain cases, though it may yield lower quality results in table recovery."
+    ]
+  },
+  {
+    "query": "What are the main features Docling offers for PDF conversion?",
+    "relevant_chunks": [
+      "Converts PDF documents to JSON or Markdown format, stable and lightning fast.",
+      "Understands detailed page layout, reading order, locates figures and recovers table structures, and optionally applies OCR for scanned PDFs."
+    ]
+  },
+  {
+    "query": "Explain how Docling handles OCR and its limitations.",
+    "relevant_chunks": [
+      "Docling provides optional support for OCR using EasyOCR for scanned PDFs or embedded images.",
+      "While EasyOCR delivers reasonable transcription quality, it runs fairly slow on CPU (upwards of 30 seconds per page)."
+    ]
+  },
+  {
+    "query": "What models are included in the initial open-source release of Docling?",
+    "relevant_chunks": [
+      "As part of Docling, we release two models: a layout analysis model and TableFormer for table structure recognition.",
+      "Both models are provided as pre-trained weights hosted on Hugging Face under docling-ibm-models."
+    ]
+  },
+  {
+    "query": "How does Docling ensure extensibility and customization?",
+    "relevant_chunks": [
+      "Docling provides a straightforward interface to extend its capabilities via a customizable model pipeline.",
+      "Developers can subclass the BaseModelPipeline to add or replace models and introduce additional configuration parameters."
+    ]
+  },
+  {
+    "query": "What are Docling’s performance characteristics on different hardware?",
+    "relevant_chunks": [
+      "Tests were run on Apple M3 Max and Intel Xeon E5-2690 CPUs using 4 and 16 threads.",
+      "The Apple M3 Max achieved 1.34 pages per second using the native backend, while the Intel Xeon reached 0.92 pages per second with 16 threads."
+    ]
+  },
+  {
+    "query": "When should the pypdfium backend be used instead of the native backend?",
+    "relevant_chunks": [
+      "If you need to run Docling in very low-resource environments, the pypdfium backend can be configured.",
+      "While faster and more memory efficient, it delivers lower quality in table structure recovery compared to the native docling-parse backend."
+    ]
+  },
+  {
+    "query": "What are some potential applications of Docling’s output?",
+    "relevant_chunks": [
+      "Docling output can support enterprise document search, passage retrieval, knowledge extraction, and RAG pipelines.",
+      "Its output enables document-native optimized vector embedding and chunking through the quackling package."
+    ]
+  },
+  {
+    "query": "Which open-source IBM initiatives integrate Docling?",
+    "relevant_chunks": [
+      "Docling is integrated with IBM’s deepsearch-experience for knowledge exploration tasks.",
+      "It is also part of the open IBM Data Prep Kit, which supports scalable data transformations for multimodal training datasets."
+    ]
+  },
+    {
+    "query": "How does the YOLOv5x model perform on DocLayNet compared to humans?",
+    "relevant_chunks": [
+      "On the other hand, the more recent YOLOv5x model does very well and even out-performs humans on selected labels such as Text, Table and Picture. This is not entirely surprising, as Text, Table and Picture are abundant and the most visually distinctive in a document.",
+      "Table 2: Prediction performance (mAP@0.5-0.95) of object detection networks on DocLayNet test set shows that YOLOv5x6 outperforms Mask R-CNN and Faster R-CNN for several classes including Table and Picture."
+    ]
+  },
+  {
+    "query": "What models were compared in DocLayNet’s evaluation and what metrics were used?",
+    "relevant_chunks": [
+      "In Table 2, we present baseline experiments (given in mAP) on Mask R-CNN, Faster R-CNN, and YOLOv5.",
+      "Prediction performance (mAP@0.5-0.95) was evaluated using COCO API metrics across categories like Caption, Formula, List-item, Picture, Section-header, Table, and Title."
+    ]
+  },
+  {
+    "query": "What backbone networks and frameworks were used for the object detection models?",
+    "relevant_chunks": [
+      "The Mask R-CNN and Faster R-CNN models with ResNet-50 and ResNet-101 backbones were trained using architectures from the Detectron2 model zoo (Mask R-CNN R50, R101-FPN 3x, Faster R-CNN R101-FPN 3x).",
+      "All models were initialized using pre-trained weights from the COCO 2017 dataset, while the YOLO implementation utilized YOLOv5x6."
+    ]
+  },
+  {
+    "query": "How was the annotation process designed in DocLayNet?",
+    "relevant_chunks": [
+      "Annotation staff were instructed to snap boxes around text segments to obtain pixel-accurate annotations, minimizing bias and annotation time.",
+      "Pages that rendered incorrectly or contained layouts impossible to capture with non-overlapping rectangles were flagged as rejected and excluded from the dataset.",
+      "Experienced annotation staff managed to annotate a single page in 20 to 60 seconds depending on its complexity."
+    ]
+  },
+  {
+    "query": "What was the goal of the DocLayNet project and how were object detection models used?",
+    "relevant_chunks": [
+      "The primary goal of DocLayNet is to obtain high-quality ML models capable of accurate document-layout analysis on a wide variety of challenging layouts.",
+      "Object detection models such as Mask R-CNN and Faster R-CNN were used due to standardized COCO format ground truth data and available frameworks like Detectron2."
+    ]
+  },
+  {
+    "query": "How does dataset size affect model performance in DocLayNet?",
+    "relevant_chunks": [
+      "A Mask R-CNN network with a ResNet-50 backbone trained on increasing fractions of the dataset shows the learning curve flattens around the 80% mark, indicating that adding more similar data does not yield significantly better predictions."
+    ]
+  },
+  {
+    "query": "What is the DocLayNet dataset composition and inter-annotator agreement?",
+    "relevant_chunks": [
+      "Table 1 of the DocLayNet paper provides the frequency of each class label and their relative occurrence in train, test, and validation sets.",
+      "The inter-annotator agreement is computed using the mAP@0.5-0.95 metric, ensuring consistent labeling across multiple annotators."
+    ]
+  },
+  {
+    "query": "What were the phases of data preparation in DocLayNet?",
+    "relevant_chunks": [
+      "Phases one and two involved a small team of experts, while phases three and four included a group of 40 dedicated annotators for quality control.",
+      "Inclusion criteria for documents were designed to ensure that all documents are free to use and representative of diverse layouts."
+    ]
+  }
+]

@@ -112,9 +112,9 @@ class EmbeddingGenerator:
             for future in as_completed(futures):
                 try:
                     result = future.result()
-                    print(f"✅ Completed: {result}")
+                    print(f"Completed: {result}")
                 except Exception as e:
-                    print(f"❌ Error processing file: {e}")
+                    print(f" Error processing file: {e}")
 
 
         print("\nAll embeddings stored in Milvus successfully!")
