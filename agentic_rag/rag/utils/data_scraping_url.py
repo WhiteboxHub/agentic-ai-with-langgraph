@@ -85,6 +85,6 @@ class SimpleWebCrawler:
 
 # # Example usage
 # if __name__ == "__main__":
-#     homepage = "https://www.gainwelltechnologies.com"
+#     homepage = "https://medium.com/etoai/hybrid-search-combining-bm25-and-semantic-search-for-better-results-with-lan-1358038fe7e6"
 #     crawler = SimpleWebCrawler(homepage, max_depth=1)
 #     crawler.run()

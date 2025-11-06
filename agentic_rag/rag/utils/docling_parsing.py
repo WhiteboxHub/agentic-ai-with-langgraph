@@ -27,6 +27,8 @@ class AdvancedPDFHandler:
             converter = DocumentConverter()
             result = converter.convert(self.pdf_path)
             markdown_text = result.document.export_to_markdown()
+            markdown_text = result.document.export_to_dict()
+
 
             if len(markdown_text.strip()) < 100:
                 raise ValueError("Docling extracted too little text")

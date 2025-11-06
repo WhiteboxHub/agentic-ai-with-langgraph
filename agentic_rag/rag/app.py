@@ -6,7 +6,7 @@ from llm_selector import get_llm
 from utils.prompts import prompt
 
 # ----------------------------
-# 🔧 Initialize Components
+# Initialize Components
 # ----------------------------
 @st.cache_resource
 def init_pipeline():
@@ -25,7 +25,7 @@ def init_pipeline():
 rag_chain = init_pipeline()
 
 # ----------------------------
-# 🎨 Streamlit UI
+# Streamlit UI
 # ----------------------------
 st.set_page_config(page_title="RAG Chatbot", page_icon="🤖", layout="centered")
 st.title("🤖 AI RAG Chatbot")
